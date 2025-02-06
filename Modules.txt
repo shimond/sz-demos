@@ -1,0 +1,25 @@
+Modules:
+	app.module
+	app.routing.module
+
+Module:
+	declaretions:
+		components - new html elements,  
+		directives - new html attributes - [], 
+		pipes - converter -> readonly (async)
+	imports: 
+	        modules - > add reference
+		core:
+			services - singleton
+		shared (like angular materials): 			
+			angular ui parts (directives, pipes and components)
+		Feature:
+			Lazy loaded modules
+
+	exports:
+		angular parts to export
+	providers:
+
+	entryComponents:
+		dialogs
+
