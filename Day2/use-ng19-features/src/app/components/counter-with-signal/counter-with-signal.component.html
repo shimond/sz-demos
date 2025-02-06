@@ -1,5 +1,5 @@
 <div>
-    <button (click)="increment()">+</button>
-    <span>{{count()}} * 2 {{countMul2()}}</span>
-    <button (click)="decrement()">-</button>
+    <button (click)="counterService.increment()">+</button>
+    <span>{{counterService.counterChange()}} * 2 {{countMul2()}} -- isEven = {{counterService.isEven()}}</span>
+    <button (click)="counterService.decrement()">-</button>
 </div>
