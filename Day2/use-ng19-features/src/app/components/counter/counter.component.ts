@@ -11,12 +11,13 @@ import { AsyncPipe } from '@angular/common';
 })
 export class CounterComponent {
 
-  count$: Observable<number>;
+  // count$: Observable<number>;
 
   constructor(private counterService: CounterService) {
-    this.count$ = this.counterService.counterChange$.pipe(
-      map(x => x * 2)
-    );
+    // this.count$ = this.counterService.counterChange;
+    // .pipe(
+    //   map(x => x * 2)
+    // );
   }
 
   increment() {
