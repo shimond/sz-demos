@@ -1,0 +1,13 @@
+<div>
+    @if(title())
+    {
+        <h3>{{title()}}</h3>
+    }
+    <div class="user-list"> @for(item of users(); track item.id) { <!-- [class.selected]="item === selectedUser()" -->
+        <div class="user-item" (click)="selectUser(item)"
+             [ngClass]="{selected: item.id === selectedUser()?.id}">
+            <div>{{ item.name }}</div>
+            <div>{{ item.email }}</div>
+        </div> }
+    </div>
+</div>
