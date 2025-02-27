@@ -1,0 +1,16 @@
+<!-- <button (click)="changeTitle()">Change Title</button> -->
+<button (click)="changeList()"> Change list </button>
+@if(selectdUserInParent()) 
+{
+  <h2>Selected person is :  {{selectdUserInParent()?.name}}</h2>
+}
+<div class="container">
+  <div>
+    <app-user-list title="user list" [users]="userList()" 
+    [selectedUser]="selectdUserInParent()"
+    (personSelected)="selectUser($event)"></app-user-list>
+  </div>
+  <!-- <div>
+    <app-user-list title="worker list" [users]="workerList()"></app-user-list>
+  </div> -->
+</div>
