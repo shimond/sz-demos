@@ -1,4 +1,4 @@
-import { computed, Injectable, signal } from '@angular/core';
+import { computed, effect, Injectable, signal } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
@@ -6,11 +6,16 @@ export class CounterService {
 
   private counterChangeSig = signal(0);
   counterChange = this.counterChangeSig.asReadonly(); // only subscribe
+
+  counterBiggerThan10 = computed(() => this.counterChangeSig() > 10);
   isEven = computed(() => 
     {
       console.log('On computed function (isEven)');
       return this.counterChange() % 2 === 0;
     });
+
+    constructor(){
+    }
 
   increment() {
     this.counterChangeSig.update(c=> c + 1); // use current value

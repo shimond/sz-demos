@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CounterWithSignalComponent {
 
-  counterService = inject(CounterService);
+  counterService = inject(CounterService); // inject method instead of constructor
   countMul2 = computed(() => this.counterService.counterChange() * 2);
 
 }
