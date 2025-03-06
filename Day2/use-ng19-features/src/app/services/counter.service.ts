@@ -1,10 +1,13 @@
-import { computed, effect, Injectable, signal } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { computed, effect, inject, Injectable, signal } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class CounterService {
 
   private counterChangeSig = signal(0);
+  private http = inject(HttpClient);
+
   counterChange = this.counterChangeSig.asReadonly(); // only subscribe
 
   counterBiggerThan10 = computed(() => this.counterChangeSig() > 10);
@@ -19,6 +22,9 @@ export class CounterService {
 
   increment() {
     this.counterChangeSig.update(c=> c + 1); // use current value
+
+
+
   }
 
   decrement() {

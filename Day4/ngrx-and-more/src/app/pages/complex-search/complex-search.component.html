@@ -1,0 +1,19 @@
+@if(store.isBusy())
+{
+     <div>Loading....</div>
+}
+
+<div>
+    <input type="text" [formControl]="searchControl" placeholder="Search text"> {{store.searchText()}}
+</div>
+@if(store.filteredResutls()){
+    @if(store.filteredResutls()!.length > 0 ){
+    <app-user-list [users]="store.filteredResutls()!"></app-user-list> 
+    }
+    @else {
+        <div>No results found</div>
+    }
+} @else {
+    <div>רגע אני טוען עדיין</div>
+}
+
