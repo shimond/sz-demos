@@ -11,31 +11,32 @@ export class CounterService {
   counterChange = this.counterChangeSig.asReadonly(); // only subscribe
 
   counterBiggerThan10 = computed(() => this.counterChangeSig() > 10);
-  isEven = computed(() => 
-    {
-      console.log('On computed function (isEven)');
-      return this.counterChange() % 2 === 0;
-    });
+  isEven = computed(() => {
+    console.log('On computed function (isEven)');
+    return this.counterChange() % 2 === 0;
+  });
 
-    constructor(){
-    }
+  constructor() {
+  }
 
   increment() {
-    this.counterChangeSig.update(c=> c + 1); // use current value
+    // this.counterChangeSig.update(c=> c + 1); // use current value
+    this.http.get('https://jsonplaceholder.typicode.com/todos/1').subscribe(() => {
+      this.counterChangeSig.update(c => c + 1); // use current value
+    });
 
-
-
+    const x =
+      
   }
 
   decrement() {
-    this.counterChangeSig.update(c=> c - 1);
+    this.counterChangeSig.update(c => c - 1);
   }
 
-  reset()
-  {
+  reset() {
     this.counterChangeSig.set(0);
   }
-  
+
 }
 
 

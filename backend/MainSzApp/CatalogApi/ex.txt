@@ -1,0 +1,64 @@
+var builder = WebApplication.CreateBuilder(args);
+//=======================================================
+var app = builder.Build();
+
+//app.Use(async (context, next) => {
+
+//    try
+//    {
+//        await next();
+//    }
+//    catch (Exception ex)
+//    {
+
+//    }
+//});
+
+app.UseAuthentication();
+app.UseStaticFiles();
+
+app.Use(async (context, next) =>
+{
+    if (context.Request.Cookies.ContainsKey("sz-cookie"))
+    {
+        await context.Response.WriteAsync("  User with cookie!"); // 1
+    }
+    else
+    {
+        await context.Response.WriteAsync("  Middleware 1  A  "); // 1
+        await next();
+        await context.Response.WriteAsync("  Middleware 1  B  ");
+    }
+});
+
+app.Use(async (context, next) =>
+{
+    await context.Response.WriteAsync("  Middleware 2  A "); // 2
+    await next();
+    await context.Response.WriteAsync("  Middleware 2  B ");
+
+});
+
+
+app.Use(async (context, next) =>
+{
+    await context.Response.WriteAsync("  Middleware 3  A "); // 3
+    await next();
+    await context.Response.WriteAsync("  Middleware 3  B ");
+});
+
+
+app.Use(async (context, next) =>
+{
+    await context.Response.WriteAsync("  Middleware 4  A "); // 4
+    await next();
+    await context.Response.WriteAsync("  Middleware 4  B "); // 6
+});
+
+app.Run(async (context) =>
+{
+    await context.Response.WriteAsync("  app Run!  "); //5 
+});
+
+
+app.Run();
