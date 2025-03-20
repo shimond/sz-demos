@@ -5,21 +5,9 @@ namespace CatalogApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class WeatherForecastController : ControllerBase
+public class WeatherForecastController(ILogger<WeatherForecastController> logger, IProductsService productsService) 
+    : ControllerBase
 {
-    private static readonly string[] Summaries = new[]
-    {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
-
-    private readonly ILogger<WeatherForecastController> _logger;
-
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
-    {
-        _logger = logger;
-    }
-
-
 
     [HttpGet("GetLastUpdate")]
     [OutputCache(Duration = 60)]
@@ -32,21 +20,21 @@ public class WeatherForecastController : ControllerBase
         };
     }
 
-    [HttpGet(Name = "GetWeatherForecast")]
-    public IEnumerable<WeatherForecast> Get()
+
+    [HttpGet("GetProductsCount")]
+    public async Task<int> GetProductsCount()
     {
-        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-        {
-            Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-        })
-        .ToArray();
+        var result = await productsService.GetProductsCount();
+        productsService.GetProductsCount().Wait();
+        return result;
     }
+
+
 
     [HttpPost(Name = "SaveWeatherForecast")]
     public int Save(WeatherForecast we)
     {
+
         return 0;
     }
 
