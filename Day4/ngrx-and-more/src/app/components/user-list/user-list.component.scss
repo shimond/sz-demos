@@ -1,0 +1,22 @@
+.user-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 8px;
+
+    .user-item {
+        cursor: pointer;
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 200px;
+        text-align: center;
+        &.selected{
+            background-color: aquamarine;
+            font-weight: bold;
+            border: 2px solid #000;
+        }
+    }
+}
