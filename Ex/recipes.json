@@ -1,0 +1,28 @@
+{
+  "recipes": [
+    {
+      "id": 1,
+      "name": "עוגת שוקולד",
+      "category": "קינוח",
+      "description": "עוגת שוקולד עשירה וטעימה",
+      "ingredients": ["שוקולד", "ביצים", "קמח", "סוכר"],
+      "isFavorite": false
+    },
+    {
+      "id": 2,
+      "name": "פסטה רוזה",
+      "category": "מנה עיקרית",
+      "description": "פסטה ברוטב עגבניות ושמנת",
+      "ingredients": ["פסטה", "רסק עגבניות", "שמנת", "תבלינים"],
+      "isFavorite": true
+    },
+    {
+      "id": 3,
+      "name": "סלט קיסר",
+      "category": "סלט",
+      "description": "סלט חסה עם רוטב קיסר וקרוטונים",
+      "ingredients": ["חסה", "קרוטונים", "רוטב קיסר", "גבינת פרמזן"],
+      "isFavorite": false
+    }
+  ]
+}
