@@ -13,3 +13,4 @@ GET {{CatalogApi_HostAddress}}/weatherforecast/GetLastUpdate
 
 ###
 
+

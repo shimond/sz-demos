@@ -1,3 +1,5 @@
+using CatalogApi.Apis;
+
 var builder = WebApplication.CreateBuilder(args);
 // register services
 builder.Services.AddControllers();
@@ -12,7 +14,6 @@ builder.Services.AddEndpointsApiExplorer(); // for minimal api
 builder.Services.AddOpenApi();
 builder.Services.AddOutputCache(); // add default output cache (in memory)
 
-
 var app = builder.Build();
 // build application middlewares
 app.UseOutputCache();
@@ -21,14 +22,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 
-var productsGroup = app.MapGroup("products");
-
-productsGroup.MapGet("GetCurrentTime", (IProductsService productsService) => new TimeData
-{
-    Now = DateTime.Now,
-    NowUtc = DateTime.UtcNow
-});
-
+app.MapProducts();
 app.Run();
 
 

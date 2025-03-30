@@ -1,5 +1,5 @@
-﻿using CatalogApi.Contracts;
-using System.Net.Sockets;
+﻿using CatalogApi.Model;
+using Microsoft.Extensions.Options;
 
 namespace CatalogApi.Services;
 
@@ -10,10 +10,30 @@ public class ProductsService : IProductsService
         await Task.Delay(2000);
         return Random.Shared.Next(1, 500);
     }
+
+    public Task<List<Product>> GetAllProducts()
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<Product?> GetProductById(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<Product> AddProduct(Product product)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<Product> UpdateProduct(Product product)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task DeleteProduct(int id)
+    {
+        throw new NotImplementedException();
+    }
+
 }
-
-
-// I/O
-// 1. get data from database
-// 2. get data from another service (rest)
-// 3. get data from files
