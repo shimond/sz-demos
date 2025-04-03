@@ -1,0 +1,31 @@
+
+@if(store.isBusy())
+{
+    <mat-spinner></mat-spinner>
+}
+@if(store.selectedItem()){
+    <div>Selected user: {{store.selectedItem()?.name}}</div>
+}
+
+<div>
+    <mat-form-field appearance="outline">
+        <mat-label>Search user</mat-label>
+        <input matInput [formControl]="searchControl" placeholder="Search text">
+    </mat-form-field>
+</div>
+@if(store.filteredResutls()){
+    @if(store.filteredResutls()!.length > 0 ){
+    <app-user-list  [users]="store.filteredResutls()!"
+    [selectedUser]="store.selectedItem()"
+    (selectedUserChange)="store.setSelectedItem($event!)"
+    
+    
+    ></app-user-list> 
+    }
+    @else {
+        <div>No results found</div>
+    }
+} @else {
+    <div>רגע אני טוען עדיין</div>
+}
+

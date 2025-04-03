@@ -29,6 +29,29 @@ export class UserListComponent {
       console.log('title changed to ', this.title());
     });
   }
-
-
 }
+
+// control-flow - ngIf, ngFor - @if @for
+// standalone components - angular 19 standalone by default
+// injection context, injec method (instead of constructor)
+// signal - signal set, get , update, compouted, effect
+// signalStore
+// input, input.required, output
+// model (use moder for 2 ways data binding)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

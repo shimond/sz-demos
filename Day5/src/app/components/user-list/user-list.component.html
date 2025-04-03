@@ -1,0 +1,61 @@
+<div class="user-list-container">
+    @if(title())
+    {
+        <h3>{{title()}}</h3>
+    }
+
+    <table mat-table [dataSource]="users()" class="mat-elevation-z8 user-table">
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let user">{{user.id}}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let user">{{user.name}}</td>
+        </ng-container>
+
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let user">{{user.email}}</td>
+        </ng-container>
+
+        <!-- Phone Column -->
+        <ng-container matColumnDef="phone">
+            <th mat-header-cell *matHeaderCellDef>Phone</th>
+            <td mat-cell *matCellDef="let user">{{user.phone}}</td>
+        </ng-container>
+
+        <!-- Age Column -->
+        <ng-container matColumnDef="age">
+            <th mat-header-cell *matHeaderCellDef>Age</th>
+            <td mat-cell *matCellDef="let user">{{user.age}}</td>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let user">
+                <button mat-icon-button color="primary" (click)="onUpdate(user, $event)" matTooltip="Update User">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="onDelete(user, $event)" matTooltip="Delete User">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                <button mat-icon-button color="accent" (click)="onAddToFavorites(user, $event)" matTooltip="Add to Favorites">
+                    <mat-icon>favorite</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <!-- Header and Row Definitions -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let user; columns: displayedColumns;"
+            (click)="selectUser(user)"
+            [ngClass]="{selected: user.id === selectedUser()?.id}">
+        </tr>
+    </table>
+</div>
